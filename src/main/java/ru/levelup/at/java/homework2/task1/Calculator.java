@@ -1,4 +1,4 @@
-package ru.levelup.at.java.homework_2.task_1;
+package ru.levelup.at.java.homework2.task1;
 
 import java.util.Scanner;
 
