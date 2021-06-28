@@ -28,8 +28,7 @@ public class Vegetable extends Food {
 
     @Override
     public void cook() {
-        System.out.println("Cut vegetable: " + getName()
-        + ". Vegetable is ready.");
+        System.out.println("Cut vegetable: " + getName() + ". Vegetable is ready.");
     }
 
 }
