@@ -27,15 +27,19 @@
 
     <profiles>
         <profile>
+
             <id>test-suite</id>
+
             <activation>
                 <activeByDefault>true</activeByDefault>
             </activation>
 
             <properties>
+
                 <suite.file.name>${project.basedir}/src/test/resources/selenium/TestSuite.xml</suite.file.name>
             </properties>
         </profile>
+
 
 
     </profiles>
@@ -49,6 +53,7 @@
         </dependency>
 
         <dependency>
+
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-java</artifactId>
             <version>${selenium-java.version}</version>
