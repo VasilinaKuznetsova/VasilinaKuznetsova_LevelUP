@@ -1,6 +1,7 @@
 package ru.levelup.at.java.homework4.task1.cook;
 
 import java.util.ArrayList;
+import java.util.stream.Collectors;
 import ru.levelup.at.java.homework4.task1.exception.GetCaloriesException;
 
 public class Dish {
@@ -41,7 +42,8 @@ public class Dish {
 
     public int getCalories() {
         int sum = 0;
-        for(Food food : ingredients) {
+        for (int i = 0, ingredientsSize = ingredients.size(); i < ingredientsSize; i++) {
+            Food food = ingredients.get(i);
             if (food.getCalorie() > 0) {
                 sum += food.getCalorie();
             } else {
@@ -52,14 +54,9 @@ public class Dish {
     }
 
     public ArrayList<String> getRedVegetables() {
-        ArrayList<String> redVeg = new ArrayList<>();
-        for(Food food : ingredients) {
-            if (food instanceof Vegetable) {
-                if (((Vegetable) food).getColor().equals("red")) {
-                    redVeg.add(food.getName());
-                }
-            }
-        }
+        ArrayList<String> redVeg = ingredients.stream().filter(food -> food instanceof Vegetable)
+                                              .filter(food -> ((Vegetable) food).getColor().equals("red"))
+                                              .map(Food::getName).collect(Collectors.toCollection(ArrayList::new));
         return redVeg;
 
     }
