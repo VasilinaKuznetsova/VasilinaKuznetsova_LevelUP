@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>ru.levelup.at</groupId>
@@ -27,59 +27,19 @@
 
     <profiles>
         <profile>
-            <id>all-calculator-suite</id>
+
+            <id>test-suite</id>
+
             <activation>
                 <activeByDefault>true</activeByDefault>
             </activation>
 
             <properties>
-                <suite.file.name>${project.basedir}/src/test/resources/build/tools/AllSuite.xml</suite.file.name>
+
+                <suite.file.name>${project.basedir}/src/test/resources/selenium/TestSuite.xml</suite.file.name>
             </properties>
         </profile>
 
-        <profile>
-            <id>sum-mult-calculator-suite</id>
-            <activation>
-                <activeByDefault>false</activeByDefault>
-            </activation>
-
-            <properties>
-                <suite.file.name>${project.basedir}/src/test/resources/build/tools/SumMultSuite.xml</suite.file.name>
-            </properties>
-        </profile>
-
-        <profile>
-            <id>sub-div-calculator-suite</id>
-            <activation>
-                <activeByDefault>false</activeByDefault>
-            </activation>
-
-            <properties>
-                <suite.file.name>${project.basedir}/src/test/resources/build/tools/SubDivSuite.xml</suite.file.name>
-            </properties>
-        </profile>
-
-        <profile>
-            <id>trigonometric-calculator-suite</id>
-            <activation>
-                <activeByDefault>false</activeByDefault>
-            </activation>
-
-            <properties>
-                <suite.file.name>${project.basedir}/src/test/resources/build/tools/TrigonometricSuite.xml</suite.file.name>
-            </properties>
-        </profile>
-
-        <profile>
-            <id>different-calculator-suite</id>
-            <activation>
-                <activeByDefault>false</activeByDefault>
-            </activation>
-
-            <properties>
-                <suite.file.name>${project.basedir}/src/test/resources/build/tools/DifferentSuite.xml</suite.file.name>
-            </properties>
-        </profile>
 
 
     </profiles>
@@ -93,16 +53,7 @@
         </dependency>
 
         <dependency>
-            <groupId>ru.levelup.qa.at</groupId>
-            <artifactId>calculator</artifactId>
-            <version>1.0</version>
-            <scope>system</scope>
-            <systemPath>
-                ${project.basedir}/src/lib/calculator-1.0.jar
-            </systemPath>
-        </dependency>
 
-        <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-java</artifactId>
             <version>${selenium-java.version}</version>
