@@ -1,4 +1,4 @@
-package ru.levelup.at.java.homework7;
+package ru.levelup.at.java.homework8;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -30,5 +30,4 @@ public class ConfProperties {
         return PROPERTIES.getProperty(key);
     }
 }
-
 
