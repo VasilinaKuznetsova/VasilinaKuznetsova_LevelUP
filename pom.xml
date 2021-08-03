@@ -40,6 +40,19 @@
             </properties>
         </profile>
 
+        <profile>
+
+            <id>test-page-object-suite</id>
+
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+
+            <properties>
+
+                <suite.file.name>${project.basedir}/src/test/resources/selenium/TestPageObjectsSuite.xml</suite.file.name>
+            </properties>
+        </profile>
 
 
     </profiles>
@@ -75,6 +88,16 @@
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
             <version>${slf4j-api.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>ru.levelup.qa.at</groupId>
+            <artifactId>calculator</artifactId>
+            <version>1.0</version>
+            <scope>system</scope>
+            <systemPath>
+                ${project.basedir}/src/lib/calculator-1.0.jar
+            </systemPath>
         </dependency>
 
 
