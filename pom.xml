@@ -19,10 +19,13 @@
         <assertj-core.version>3.19.0</assertj-core.version>
         <webdrivermanager.version>4.4.3</webdrivermanager.version>
         <slf4j-api.version>1.7.30</slf4j-api.version>
+        <allure.version>2.14.0</allure.version>
+        <aspectj.version>1.9.6</aspectj.version>
 
         <maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
         <maven-checkstyle-plugin.version>3.1.2</maven-checkstyle-plugin.version>
         <maven-surefire-plugin.version>3.0.0-M5</maven-surefire-plugin.version>
+        <allure-maven-plugin.version>2.10.0</allure-maven-plugin.version>
     </properties>
 
     <profiles>
@@ -35,7 +38,6 @@
             </activation>
 
             <properties>
-
                 <suite.file.name>${project.basedir}/src/test/resources/selenium/TestSuite.xml</suite.file.name>
             </properties>
         </profile>
@@ -49,8 +51,20 @@
             </activation>
 
             <properties>
-
                 <suite.file.name>${project.basedir}/src/test/resources/selenium/TestPageObjectsSuite.xml</suite.file.name>
+            </properties>
+        </profile>
+
+        <profile>
+
+            <id>test-steps-suite</id>
+
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+
+            <properties>
+                <suite.file.name>${project.basedir}/src/test/resources/selenium/TestStepsSuite.xml</suite.file.name>
             </properties>
         </profile>
 
@@ -100,6 +114,11 @@
             </systemPath>
         </dependency>
 
+        <dependency>
+            <groupId>io.qameta.allure</groupId>
+            <artifactId>allure-testng</artifactId>
+            <version>${allure.version}</version>
+        </dependency>
 
     </dependencies>
 
@@ -155,14 +174,39 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>${maven-surefire-plugin.version}</version>
                 <configuration>
+                    <argLine>
+                        -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"
+                    </argLine>
                     <suiteXmlFiles>
                         <suiteXmlFile>${suite.file.name}</suiteXmlFile>
                     </suiteXmlFiles>
                 </configuration>
-            </plugin>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.aspectj</groupId>
+                        <artifactId>aspectjweaver</artifactId>
+                        <version>${aspectj.version}</version>
+                    </dependency>
+                </dependencies>
 
+            </plugin>
 
         </plugins>
     </build>
+
+    <reporting>
+        <excludeDefaults>true</excludeDefaults>
+
+        <plugins>
+            <plugin>
+                <groupId>io.qameta.allure</groupId>
+                <artifactId>allure-maven</artifactId>
+                <version>${allure-maven-plugin.version}</version>
+                <configuration>
+                    <reportVersion>${allure.version}</reportVersion>
+                </configuration>
+            </plugin>
+        </plugins>
+    </reporting>
 
 </project>

@@ -33,14 +33,14 @@ public class MailExercise2Test extends AbstractSeleniumTest {
             "Тест Test Subject", "Test Text");
 
         var mailSentPage = mailInboxPage.clickSentButton();
-        assertThat(mailSentPage.getLetterContactTo(0)).isEqualTo("vasilina_levelup@mail.ru");
-        assertThat(mailSentPage.getLetterSubject(0)).isEqualTo("Self: Тест Test Subject");
-        assertThat(mailSentPage.getLetterText(0)).isEqualTo("Test Text");
+        assertThat(mailSentPage.getLetterContactTo(0)).containsIgnoringCase("vasilina_levelup@mail.ru");
+        assertThat(mailSentPage.getLetterSubject(0)).containsIgnoringCase("Тест Test Subject");
+        assertThat(mailSentPage.getLetterText(0)).containsIgnoringCase("Test Text");
 
         var mailTestPage = mailSentPage.clickTestButton();
-        assertThat(mailTestPage.getLetterContactTo(0)).isEqualTo("vasilina_levelup@mail.ru");
-        assertThat(mailTestPage.getLetterSubject(0)).isEqualTo("Self: Тест Test Subject");
-        assertThat(mailTestPage.getLetterText(0)).isEqualTo("Test Text");
+        assertThat(mailTestPage.getLetterContactTo(0)).containsIgnoringCase("vasilina_levelup@mail.ru");
+        assertThat(mailTestPage.getLetterSubject(0)).containsIgnoringCase("Тест Test Subject");
+        assertThat(mailTestPage.getLetterText(0)).containsIgnoringCase("Test Text");
 
         mailTestPage.logout();
     }
