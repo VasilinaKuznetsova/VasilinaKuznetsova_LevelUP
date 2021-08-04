@@ -122,7 +122,7 @@ public class CommentTest {
 
     @Test
     public void getCommentTest() {
-        CommentResponse actualUser = given()
+        given()
             .spec(requestSpecification)
             .pathParam("commentId", 1455)
             .when()
@@ -137,7 +137,7 @@ public class CommentTest {
 
     @Test
     public void getAllCommentsTest() {
-        CommentsListResponse actualUsers = given()
+        CommentsListResponse actualComments = given()
             .spec(requestSpecification)
             .when()
             .get("/public/v1/comments")
@@ -147,7 +147,7 @@ public class CommentTest {
             .extract()
             .as(CommentsListResponse.class);
 
-        System.out.println(actualUsers);
+        System.out.println(actualComments);
     }
 
     @Test
